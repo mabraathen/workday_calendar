@@ -1,5 +1,4 @@
 import datetime
-import holidays
 import math
 
 ########################################################################
@@ -14,7 +13,6 @@ import math
 
 
 class Calendar:
-
     def __init__(self, workday_start, workday_end):
         self.workday_start = datetime.datetime.strptime(workday_start, "%H:%M").time()
         self.workday_end = datetime.datetime.strptime(workday_end, "%H:%M").time()
@@ -32,7 +30,6 @@ class Calendar:
             final_datetime = self.subtractDays(datetime_start, minutes, days)
         else:
             print("Error, workdays must not be 0!")
-
         return final_datetime
 
     #convert integer and decimal of input to days and minutes
@@ -202,14 +199,11 @@ class Calendar:
         return self.workday_end
 
 if __name__ == "__main__":
-    #example creating of the calendar, and setting up example work hours, format HH:mm
+    #example creating of the calendar, and setting up example work hours
     myCalendar = Calendar("08:00", "16:00")
-
     #single holiday example
     myCalendar.addHoliday("27/5/2004")
-
     #recurring holiday example
     myCalendar.addRecurringHoliday("17/5")
-
     #example task
     print("final result: ", myCalendar.addWorkDays("24/5/2004 07:03", -6.7470217))
